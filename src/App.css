@@ -1,0 +1,43 @@
+.cuadrito {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+.cuadrito_blue {
+  background-color: #219ebc;
+}
+.cuadrito_red {
+  background-color: #e76f51;
+}
+.cuadrito_green {
+  background-color: #2a9d8f;
+}
+.cuadrito_yellow {
+  background-color: #e9c46a;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  gap: 5px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.paleta {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+.paleta button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+html {
+  font-family: sans-serif;
+  background-color: #aaaaaa;
+}
