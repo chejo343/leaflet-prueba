@@ -3,6 +3,7 @@ import './App2.css'
 
 const App2 = () => {
   const mapa = useRef(null);
+  const drawTools = useRef(null);
   const init = () => {
     if (mapa.current) {
       return;
@@ -33,6 +34,29 @@ const App2 = () => {
       compassBearing: true,
       touchRotate: true,
     });
+    const editableLayers = new window.L.FeatureGroup();
+      mapa.current.addLayer(editableLayers);
+      const drawOptions = {
+        position: 'topleft',
+        draw: {
+          polyline: false,
+          circle: false,
+          circlemarker: false,
+          marker: false,
+          polygon: true,
+          rectangle: true,
+          buttons: {
+            polygon: 'Dibujar un polígono',
+            rectangle: 'Dibujar un rectángulo'
+          }
+        },
+        edit: {
+          featureGroup: editableLayers,
+          remove: true
+        }
+      }
+      drawTools.current = new window.L.Control.Draw(drawOptions);
+      mapa.current.addLayer(editableLayers);
     // window.L.control.layers({
     //   'Empty': window.L.tileLayer(''),
     //   'Streets': osm,
