@@ -58,6 +58,14 @@ const App2 = () => {
     drawTools.current = new window.L.Control.Draw(drawOptions);
     mapa.current.addLayer(editableLayers);
     drawTools.current.addTo(mapa.current)
+    mapa.current.on('draw:created', (ev) => {
+      const layer = ev.layer;
+      const puntos = layer.getLatLngs()[0].map(i => ({ id: Symbol('punto'), lat: i.lat, lng: i.lng }))
+      console.log(puntos)
+      if (ev.layerType === 'polygon') {
+        editableLayers.addLayer(layer);
+      }
+    });
     // window.L.control.layers({
     //   'Empty': window.L.tileLayer(''),
     //   'Streets': osm,
