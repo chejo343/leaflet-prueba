@@ -35,28 +35,29 @@ const App2 = () => {
       touchRotate: true,
     });
     const editableLayers = new window.L.FeatureGroup();
-      mapa.current.addLayer(editableLayers);
-      const drawOptions = {
-        position: 'topleft',
-        draw: {
-          polyline: false,
-          circle: false,
-          circlemarker: false,
-          marker: false,
-          polygon: true,
-          rectangle: true,
-          buttons: {
-            polygon: 'Dibujar un polígono',
-            rectangle: 'Dibujar un rectángulo'
-          }
-        },
-        edit: {
-          featureGroup: editableLayers,
-          remove: true
+    mapa.current.addLayer(editableLayers);
+    const drawOptions = {
+      position: 'topleft',
+      draw: {
+        polyline: false,
+        circle: false,
+        circlemarker: false,
+        marker: false,
+        polygon: true,
+        rectangle: true,
+        buttons: {
+          polygon: 'Dibujar un polígono',
+          rectangle: 'Dibujar un rectángulo'
         }
+      },
+      edit: {
+        featureGroup: editableLayers,
+        remove: true
       }
-      drawTools.current = new window.L.Control.Draw(drawOptions);
-      mapa.current.addLayer(editableLayers);
+    }
+    drawTools.current = new window.L.Control.Draw(drawOptions);
+    mapa.current.addLayer(editableLayers);
+    drawTools.current.addTo(mapa.current)
     // window.L.control.layers({
     //   'Empty': window.L.tileLayer(''),
     //   'Streets': osm,
